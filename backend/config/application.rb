@@ -8,7 +8,6 @@ Bundler.require(*Rails.groups)
 
 module Backend
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.1
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
@@ -28,5 +27,7 @@ module Backend
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    # Fakerの言語を日本語に設定
+    Faker::Config.locale = "ja"
   end
 end
