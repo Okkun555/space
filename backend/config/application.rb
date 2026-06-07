@@ -29,5 +29,9 @@ module Backend
     config.api_only = true
     # Fakerの言語を日本語に設定
     Faker::Config.locale = "ja"
+
+    config.session_store :cookie_store, key: "_tech_space_session"
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use config.session_store, config.session_options
   end
 end
