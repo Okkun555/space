@@ -19,6 +19,10 @@ RSpec.describe "Api::Auth::SignUp", type: :request do
       it "ユーザーが作成され、201を返すこと" do
         expect { subject }.to change(User, :count).by(1)
         expect(response).to have_http_status(:created)
+
+        parsed_response = response.parsed_body
+        expect(parsed_response[:email]).to eq(params[:user][:email])
+        expect(parsed_response[:name]).to eq(params[:user][:name])
       end
     end
 
