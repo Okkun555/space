@@ -6,7 +6,7 @@ class Api::Auth::SessionsController < ApplicationController
       session[:user_id] = user.id
       render json: UserSerializer.render(user), status: :ok
     else
-      render json: { errors: [{ field: "base", message: "メールアドレスまたはパスワードが正しくありません" }] }, status: :unauthorized
+      render_unauthorized("メールアドレスまたはパスワードが正しくありません")
     end
   end
 
